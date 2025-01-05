@@ -16,5 +16,5 @@ services:
       DB_MYSQL_PASSWORD: "password"
       DB_MYSQL_NAME: "npm"
     volumes:
-      - /docker/npm/data:/data
-      - /docker/npm/letsencrypt:/etc/letsencrypt
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
