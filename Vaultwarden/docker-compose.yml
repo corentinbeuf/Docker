@@ -1,0 +1,17 @@
+version: "3.7"
+
+services:
+  vaultwarden:
+    image: "vaultwarden/server:1.32.0"
+    container_name: "vaultwarden"
+    hostname: "vaultwarden"
+    restart: always
+    volumes:
+      - ./data:/data/
+    environment:
+      - "WEBSOCKET_ENABLED=true"
+      - "DATABASE_URL=mysql://bitwarden:XtGHTpSaYkHgV4DYYCe4@192.168.1.203:3306/bitwarden"
+      - "TZ=Europe/Paris"
+    ports:
+      - "8020:80"
+      - "4430:443"
