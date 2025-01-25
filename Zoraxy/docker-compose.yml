@@ -1,0 +1,15 @@
+services:
+  zoraxy:
+    image: "zoraxydocker/zoraxy:latest"
+    container_name: zoraxy
+    restart: unless-stopped
+    ports:
+      - 80:80
+      - 443:443
+      - 8005:8000/tcp
+    volumes:
+       - ./config:/opt/zoraxy/config/
+       - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+       PORT: "8000"
+       FASTGEOIP: "true"
