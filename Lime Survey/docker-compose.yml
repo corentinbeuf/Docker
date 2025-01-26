@@ -1,0 +1,21 @@
+version: '2'
+services:
+  mysql:
+    image: mysql:5.7.23
+    volumes:
+      - ./mysql:/docker/limesurvey/data/mysql
+    restart: always
+    environment:
+        MYSQL_ROOT_PASSWORD: password
+  limesurvey:
+    image:
+      crramirez/limesurvey:latest
+    links:
+      - mysql
+    environment:
+      - "DISABLE_MYSQL=yes"
+    ports:
+      - "8070:80"
+    volumes:
+      - ./upload:/docker/limesurvey/data/upload
+    restart: always
