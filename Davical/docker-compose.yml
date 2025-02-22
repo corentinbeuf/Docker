@@ -1,0 +1,14 @@
+# https://hub.docker.com/r/datze/davical_https
+version: '3.6'
+services:
+  davical:
+    image: datze/davical_https:latest
+    container_name: davical
+    restart: always
+    environment:
+      - TIME_ZONE=Europe/Paris
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data/
