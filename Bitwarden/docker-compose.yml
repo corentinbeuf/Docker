@@ -1,0 +1,21 @@
+version:  '3'
+services:
+  vaultwarden:
+    image: vaultwarden/server:1.30.3
+    container_name: vaultwarden
+    restart: always
+    environment:
+      -  WEBSOCKET_ENABLED=true
+      #-  SMTP_HOST=mail.example.com
+      #-  SMTP_FROM=admin@example.com
+      #-  SMTP_PORT=587
+      #-  SMTP_SECURITY=force_tls
+      #-  SMTP_USERNAME=admin
+      #-  SMTP_PASSWORD=<password>
+      #-  DOMAIN=https://vault.example.com
+    ports:
+       -  8010:80
+       -  8443:443
+    volumes:
+       #- ./ssl/keys/:/ssl/
+       -  ./vw-data:/data
