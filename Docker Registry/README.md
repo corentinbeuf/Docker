@@ -1,12 +1,11 @@
 # Docker Registry
-Your content here
 
 ## Présentation
 
 ## Installation
 ### Docker
-- [Docker](/documentation/linux/docker)
-{.links-list}
+- [Script d'installation](https://raw.githubusercontent.com/corentinbeuf/Bash/refs/heads/main/Docker/install_docker.sh)
+- [Documentation officiel](https://docs.docker.com/engine/install/)
 
 ### Prérequis
 - Mettre à jour les sources.
@@ -87,7 +86,27 @@ docker pull 192.168.122.231:5000/my-alpine
 ```
 
 ## Sauvegarde
+- Voir la documentation sur le repository [Docker](https://github.com/corentinbeuf/Bash/blob/main/Docker/README.md)
 
 ## Restauration
+- Voir la documentation sur le repository [Docker](https://github.com/corentinbeuf/Bash/blob/main/Docker/README.md)
 
 ## Mise à jour
+- Supprimer les conteneurs en cours d'exécution.
+```bash
+sudo docker rm -f registry registry-ui
+```
+- Supprimer l'image "**https**" présente sur le serveur.
+```bash
+sudo docker image rm -f registry:2.8.1 konradkleine/docker-registry-frontend:v2
+```
+- Editer le fichier docker-compose.yml.
+```bash
+sudo nano /docker/registry/docker-compose.yml
+```
+- Modifier les étiquettes des images.
+- Faire un "**Ctrl+S**" puis un "**Ctrl+X**" pour sauvegarder puis quitter le fichier.
+- Redémarrer les conteneurs.
+```bash
+cd /docker/registry && sudo docker compose up -d
+```
