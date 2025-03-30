@@ -1,12 +1,11 @@
 # Homer
-Your content here
 
 ## Présentation
 
 ## Installation
 ### Docker
-- [Docker](/documentation/linux/docker)
-{.links-list}
+- [Script d'installation](https://raw.githubusercontent.com/corentinbeuf/Bash/refs/heads/main/Docker/install_docker.sh)
+- [Documentation officiel](https://docs.docker.com/engine/install/)
 
 ### Homer
 - Créer le dossier "**homer**" dans le répertoire "**docker**".
@@ -38,10 +37,33 @@ docker compose restart
 - Se connecter sur l'adresse suivante pour créer son compte et accéder à l'application : `http://IP:8080`
 
 ## Configuration
-
+- Editer le fichier "**config.yml**".
+```bash
+sudo nano /docker/homer/assets/config.yml
+```
+- Modifier le contenu de ce fichier pour modifier la page web.
+- Faire un "**Ctrl+S**" puis un "**Ctrl+X**" pour sauvegarder puis quitter le fichier.
+- Redémarrer le conteneur pour la bonne prise en compte des modifications.
+```bash
+docker compose restart homer
+```
 
 ## Sauvegarde
+- Voir la documentation sur le repository [Docker](https://github.com/corentinbeuf/Bash/blob/main/Docker/README.md)
 
 ## Restauration
+- Voir la documentation sur le repository [Docker](https://github.com/corentinbeuf/Bash/blob/main/Docker/README.md)
 
 ## Mise à jour
+- Supprimer le conteneur en cours d'exécution.
+```bash
+sudo docker rm -f homer
+```
+- Supprimer l'image "**b4bz/homer**" présente sur le serveur.
+```bash
+sudo docker image rm -f b4bz/homer
+```
+- Redémarrer le conteneur.
+```bash
+cd /docker/homer && sudo docker compose up -d
+```
