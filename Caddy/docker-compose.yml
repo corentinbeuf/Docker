@@ -2,6 +2,7 @@ services:
   caddy:
     image: caddy:2.9.1
     restart: unless-stopped
+    container_name: caddy
     ports:
       - "80:80"
       - "443:443"
@@ -11,6 +12,7 @@ services:
       - ./site:/srv
       - ./data:/data
       - ./config:/config
+      - ./html:/usr/share/caddy
 
 #volumes:
 #  caddy_data:
