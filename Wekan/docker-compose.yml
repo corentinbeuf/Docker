@@ -13,6 +13,7 @@ services:
 
   wekan:
     image: wekanteam/wekan:latest
+    container_name: wekan
     restart: always
     ports:
       - 80:8080
