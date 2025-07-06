@@ -1,0 +1,12 @@
+services:
+  app:
+    container_name: dashlit
+    image: ghcr.io/codewec/dashlit:latest
+    restart: unless-stopped
+    environment:
+      ORIGIN: 'http://192.168.1.1:3024'
+      PASSWORD: 'password'
+    ports:
+      - '3024:3000'
+    volumes:
+      - ./data:/app/data
