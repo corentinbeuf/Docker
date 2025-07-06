@@ -1,0 +1,14 @@
+services:
+  app:
+    image: globusgroup/vito:latest
+    container_name: vito
+    restart: unless-stopped
+    environment:
+      - SECRETS_LIFETIME_IN_MINUTES=60
+      - APP_ENV=production
+      - APP_DEBUG=false
+      - APP_URL=https://vito.example.com
+    volumes:
+      - ./storage:/var/www/html/storage
+    ports:
+      - "9999:80"
