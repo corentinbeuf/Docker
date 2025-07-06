@@ -7,7 +7,7 @@
 - [Script d'installation](https://raw.githubusercontent.com/corentinbeuf/Bash/refs/heads/main/Docker/install_docker.sh)
 - [Documentation officiel](https://docs.docker.com/engine/install/)
 
-### Homer
+### DashLit
 - Créer le dossier "**dashlit**" dans le répertoire "**docker**".
 ```bash
 sudo mkdir /docker/dashlit
