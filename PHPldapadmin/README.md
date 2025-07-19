@@ -5,8 +5,8 @@ Your content here
 
 ## Installation
 ### Docker
-- [Docker](/documentation/linux/docker)
-{.links-list}
+- [Script d'installation](https://raw.githubusercontent.com/corentinbeuf/Bash/refs/heads/main/Docker/install_docker.sh)
+- [Documentation officiel](https://docs.docker.com/engine/install/)
 
 ### PHPldapadmin
 - Créer le dossier "**phpldapadmin**" dans le répertoire "**docker**".
@@ -41,7 +41,21 @@ docker compose up -d
 
 
 ## Sauvegarde
+- Voir la documentation sur le repository [Docker](https://github.com/corentinbeuf/Bash/blob/main/Docker/README.md)
 
 ## Restauration
+- Voir la documentation sur le repository [Docker](https://github.com/corentinbeuf/Bash/blob/main/Docker/README.md)
 
 ## Mise à jour
+- Supprimer le conteneur en cours d'exécution.
+```bash
+sudo docker rm -f phpldapadmin
+```
+- Supprimer l'image "**windfisch/phpldapadmin**" présente sur le serveur.
+```bash
+sudo docker image rm -f windfisch/phpldapadmin
+```
+- Redémarrer le conteneur.
+```bash
+cd /docker/phpldapadmin && sudo docker compose up -d
+```
