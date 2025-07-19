@@ -5,7 +5,8 @@ Your content here
 
 ## Installation
 ### Docker
-- [Docker](/documentation/linux/docker)
+- [Script d'installation](https://raw.githubusercontent.com/corentinbeuf/Bash/refs/heads/main/Docker/install_docker.sh)
+- [Documentation officiel](https://docs.docker.com/engine/install/)
 
 ### Portainer
 - Créer le dossier "**portainer**" dans le répertoire "**docker**".
