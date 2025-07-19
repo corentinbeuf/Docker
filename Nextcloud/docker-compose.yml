@@ -20,6 +20,7 @@ services:
 
   nextcloud_app:
     image: nextcloud
+    container_name: nextcloud_app
     restart: always
     ports:
       - 22080:80
@@ -36,6 +37,7 @@ services:
 
   nextcloud_cron:
     image: nextcloud
+    container_name: nextcloud_cron
     restart: always
     links:
       - nextcloud_db
