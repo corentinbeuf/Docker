@@ -6,7 +6,6 @@ Your content here
 ## Installation
 ### Docker
 - [Docker](/documentation/linux/docker)
-{.links-list}
 
 ### Portainer
 - Créer le dossier "**portainer**" dans le répertoire "**docker**".
@@ -42,7 +41,7 @@ docker compose up -d
 ## Mise à jour
 - Supprimer le conteneur en cours d'exécution.
 ```bash
-sudo docker rm -f paortainer
+sudo docker rm -f portainer
 ```
 - Supprimer l'image "**portainer/portainer-ce:latest**" présente sur le serveur.
 ```bash
