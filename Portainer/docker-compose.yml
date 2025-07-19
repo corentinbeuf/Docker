@@ -2,6 +2,7 @@ version: "3"
 services:
     portainer:
         image: 'portainer/portainer-ce:latest'
+        container_name: portainer
         restart: always
         volumes:
             #- ./docker.sock:/var/run/docker.sock
