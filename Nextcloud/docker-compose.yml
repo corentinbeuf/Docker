@@ -1,0 +1,52 @@
+version: '3.8'
+services:
+  nextcloud_db:
+    image: mariadb:10.5
+    container_name: nextcloud_db
+    restart: always
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    volumes:
+      - /docker/nextcloud/db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+      - MYSQL_PASSWORD=nextcloud
+
+  nextcloud_redis:
+    image: redis:latest
+    container_name: nextcloud_redis
+    restart: always
+
+  nextcloud_app:
+    image: nextcloud
+    container_name: nextcloud_app
+    restart: always
+    ports:
+      - 22080:80
+    links:
+      - nextcloud_db
+      - nextcloud_redis
+    volumes:
+      - /docker/nextcloud/data:/var/www/html
+    environment:
+      - MYSQL_HOST=nextcloud_db
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+      - MYSQL_PASSWORD=nextcloud
+
+  nextcloud_cron:
+    image: nextcloud
+    container_name: nextcloud_cron
+    restart: always
+    links:
+      - nextcloud_db
+      - nextcloud_redis
+    volumes:
+      - /docker/nextcloud/data:/var/www/html
+    environment:
+      - MYSQL_HOST=nextcloud_db
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+      - MYSQL_PASSWORD=nextcloud
+    entrypoint: /cron.sh
