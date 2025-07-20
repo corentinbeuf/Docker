@@ -1,0 +1,11 @@
+smtp-config.host: 'smtp.example.com'
+smtp-config.port: 587
+smtp-config.username: admin@example.com
+smtp-config.password: password
+smtp-config.transport-strategy: SMTP_TLS
+
+integrations:
+  email:
+    - name: email_implicitly_enabled
+      from-address: admin@example.com
+      to-address: it@example.com
