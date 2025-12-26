@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  backuppc:
+    image: adferrand/backuppc
+    container_name: backuppc
+    ports:
+      - 80:8080
+    volumes:
+      - ./backuppc/etc:/etc/backuppc
+      - ./backuppc/home:/home/backuppc
+      - ./backuppc/data:/data/backuppc
+    environment:
+      - BACKUPPC_WEB_USER=backuppc
+      - BACKUPPC_WEB_PASSWD=debian

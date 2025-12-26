@@ -1,0 +1,31 @@
+services:
+  kuvasz-db:
+    image: postgres:17-alpine
+    container_name: kuvaszdb
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres 
+      TZ: 'Europe/Paris' 
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data 
+      
+  kuvasz:
+    image: kuvaszmonitoring/kuvasz:latest
+    container_name: kuvasz
+    mem_limit: 384M # optional 
+    ports:
+      - "4080:8080"
+    environment:
+      TZ: 'Europe/Paris' 
+      DATABASE_HOST: kuvaszdb 
+      DATABASE_USER: postgres 
+      DATABASE_PASSWORD: postgres 
+      ADMIN_USER: YourSuperSecretUsername
+      ADMIN_PASSWORD: YourSuperSecretPassword
+      ADMIN_API_KEY: ThisShouldBeVeryVerySecureToo
+    volumes:
+      - ./kuvasz.yml:/config/kuvasz.yml 
+    depends_on:
+      - kuvasz-db
